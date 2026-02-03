@@ -116,7 +116,16 @@ public class Main {
             System.out.println("Danh sách sinh viên trống");
             return;
         }
-        students.sort((s1, s2) -> Double.compare(s2.getScore(), s1.getScore()));
+        int n = students.size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (students.get(j).getScore() < students.get(j + 1).getScore()) {
+                    Student temp = students.get(j);
+                    students.set(j, students.get(j + 1));
+                    students.set(j + 1, temp);
+                }
+            }
+        }
         System.out.println("Sắp xếp thành công!");
     }
 }
